@@ -1,0 +1,11 @@
+// Deterministic environment for e2e tests (the .env file is ignored when NODE_ENV=test).
+process.env.NODE_ENV = 'test';
+process.env.DATABASE_URL = process.env.E2E_DATABASE_URL;
+process.env.JWT_SECRET = 'e2e-only-secret-value-that-is-long-enough-1234567890';
+process.env.JWT_EXPIRES_IN = '1h';
+process.env.AI_API_KEY = ''; // AI endpoints must answer with their friendly fallbacks in tests
+process.env.AI_MODEL = 'claude-opus-5-5';
+process.env.ADMIN_EMAIL = '';
+process.env.ADMIN_PASSWORD = '';
+process.env.APP_TIMEZONE = 'Asia/Karachi';
+process.env.THROTTLE_LIMIT = '10000';
