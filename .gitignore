@@ -1,9 +1,12 @@
 # compiled output
 /dist
 /dist-e2e
-/node_modules
 /build
+/out-tsc
 *.tsbuildinfo
+
+# dependencies
+/node_modules
 
 # Logs
 logs
@@ -12,10 +15,12 @@ npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Tests
 /coverage
@@ -29,18 +34,27 @@ Thumbs.db
 *.launch
 .settings/
 *.sublime-workspace
+*.swp
+.history/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# dotenv environment variable files
+# dotenv environment variable files (keep only the example)
 .env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+.env.*
+!.env.example
+
+# secrets / keys
+*.pem
+*.key
+ai-api-key*
+
+# deploy tooling
+.render/
+.vercel/
 
 # temp directory
 .temp
