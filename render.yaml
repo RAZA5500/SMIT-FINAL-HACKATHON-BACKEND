@@ -1,0 +1,39 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Secrets marked `sync: false` are prompted for in the Render dashboard on first deploy.
+services:
+  - type: web
+    name: hcm-lite-api
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 1d
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_MODEL
+        value: claude-opus-5-5
+      - key: CORS_ORIGIN
+        sync: false
+      - key: APP_TIMEZONE
+        value: Asia/Karachi
+      - key: THROTTLE_LIMIT
+        value: "300"
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: COMPANY_NAME
+        sync: false
+      - key: ADMIN_FULL_NAME
+        sync: false
